@@ -100,13 +100,27 @@
   xhr.onreadystatechange = function(res) {
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
           var  text = this.response;
-          console.log(this)
+      
           const res = document.getElementById('result');
           res.innerHTML=text;
           
 
 
     }
+
+     if (this.readyState === XMLHttpRequest.DONE && this.status === 402) {
+          var  text = this.response;
+      
+          const res = document.getElementById('result');
+          res.innerHTML=text;
+          
+
+
+    }
+
+    
+
+
 }
 var   msg = document.getElementById('msg');
 
