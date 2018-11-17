@@ -44,6 +44,7 @@ app.get('/',(req,res)=>{
       if (user) {
         return res.json({
           status: 200,
+          token : req.headers["x-access-token"],
           msg: "User Already  have a token ..."
         });
       }
