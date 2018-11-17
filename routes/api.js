@@ -106,6 +106,7 @@ app.get('/',(req,res)=>{
       });
       if (total <= 80000) {
         res.send(justifiedText);
+
         if(user ){
         user.text.push({
           date: new Date(Date.now()),
@@ -114,9 +115,9 @@ app.get('/',(req,res)=>{
         await user.save();
       }
       } else {
-        res.status(402).send({
-          msg: "Payment required!!"
-        });
+        res.status(402).send(`U passed the day limit of today
+        : ${new Date(Date.now()).toDateString()  } Payement is required 
+        `);
       }
     } catch (e) {
       console.error(e);
