@@ -23,13 +23,7 @@ module.exports = app => {
     next();
   }
 
-  app.get("/", (req, res) => {
-    res.json({
-      "name":"saidi zied",
-    "/api/token":"to create a token  take an email as params",
-    "/api/justify":"to justify a text  --> take as prams :  plain/text"
-    })
-  });
+
 
   app.post("/api/token", (req, res) => {
     const { email } = req.body;
