@@ -19,6 +19,7 @@ module.exports = app => {
           message: "Failed to authenticate token."
         });
       req._token = decoded;
+      req.token=token;
     });
     next();
   }
@@ -38,18 +39,20 @@ app.get('/',(req,res)=>{
       })
     }
 
+    var token = jwt.sign(email, "mytestserver");
+
     User.findOne({
       email
     }).then(user => {
       if (user) {
         return res.json({
           status: 200,
-          token : req.headers["x-access-token"],
+          token : token,
           msg: "User Already  have a token ..."
         });
       }
 
-      const token = jwt.sign(email, "mytestserver");
+     
 
       const userProfile = new User({
         email: email,
