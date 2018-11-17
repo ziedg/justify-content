@@ -4,7 +4,7 @@
   "description": "the is an easy implementation of an api that accept a plain text and return the  justfied version",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node app.js"
   },
   "author": "saidi zied",
   "license": "ISC",
