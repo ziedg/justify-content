@@ -116,7 +116,7 @@ app.get('/',(req,res)=>{
       }
       } else {
         res.status(402).send(`U passed the day limit of today
-        : ${new Date(Date.now()).toDateString()  } ---> Payement is required 
+        : ${new Date(Date.now()).toDateString()  } ----> Payement is required 
         `);
       }
     } catch (e) {
