@@ -35,7 +35,7 @@ app.use(bodyParser.text({ type: "json" }));
 
 require("./routes/api")(app);
 
-const PORT = process.env.PORT|4000;
+const PORT = process.env.PORT
 
 app.listen(PORT, () => {
   console.log(`App is up at port ${PORT} `);
