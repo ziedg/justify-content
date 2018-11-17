@@ -3,22 +3,123 @@
 
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="./syle.css"> 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Justify a Text:</title>
 </head>
 
-<body style="margin:100px">
-    <H1> This is a demo to Justify content Using node js</H1>
-    <hr>
-    <h2> to create a token just type : </h2>
-    <h3> /api/token </h3>
-    <h6> body contain an email</h6>
-    <h6> {email:"foo@bar"}</h6>
-    <h2> to justify a text just type :</h2>
-    <h6> /api/justify</h6>
 
-    <h6> plain/text</h6>
+<body >
+    <div class="container">
+
+            <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                      <li class="breadcrumb-item active" aria-current="page">
+
+                            This is a demo to Justify content Using node js
+                      </li>
+                    </ol>
+                  </nav>
+       
+            <h3 class="text-primary"> Create a Token  </h3>
+            <h5  class="text-success">  Endpoint :  /api/token  </h5>
+            <h5  class="text-success">  RequestType :  POST  </h5>
+    
+             <input  id='email' type='email' class="form-control" placeholder="enter your email"  >
+             <br>
+             <button class="btn btn-primary btn-block"  onclick="send()"  > GetToken</button>
+      <br>
+          Token : <span id="token">  </span>
+
+
+
+
+             <hr> 
+          
+            <h3 class="text-primary"> Justify Text </h3>
+            <textarea class="form-control" 
+             id='msg' 
+             rows="12" cols="18"
+            placeholder="type your text here.">
+                 
+            </textarea>
+            <br> 
+            <h5  class="text-success" >  Endpoint : /api/justify</h5>
+             <h5  class="text-success">  RequestType :  POST  </h5>
+             <p  class=" alert alert-danger ">
+                 make sure to add this to your headers:
+                Headers :  x-access-token : token  
+            </p>
+
+
+             <button class="btn btn-primary btn-block"  onclick="justify()"  > Justify  Text </button>
+        
+
+             Result :
+             <pre  id='result'>
+               
+                </pre>
+ 
+    </div>
+
+    <script>
+    
+    var email = document.getElementById('email');
+    var token='';
+
+ function send(){
+  var  xhr = new XMLHttpRequest();
+  xhr.open("POST", 'http://localhost:4000/api/token', true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.onreadystatechange = function(res) { // Call a function when the state changes.
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+     var parsedRes = JSON.parse(this.response)
+     var tokenEl = document.getElementById('token');
+     if(parsedRes.token){
+         token = parsedRes.token;
+         tokenEl.innerHTML=token;
+         console.log(token)
+
+     }
+
+
+    }
+}
+  xhr.send(JSON.stringify({email:email.value}));
+ }
+  
+
+  function  justify (){
+      console.log(token)
+  var  xhr = new XMLHttpRequest();
+  xhr.open("POST", 'http://localhost:4000/api/justify', true);
+  xhr.setRequestHeader("Content-Type", "text/plain");
+  xhr.setRequestHeader('x-access-token', token)
+  xhr.onreadystatechange = function(res) {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+          var  text = this.response;
+          console.log(this)
+          const res = document.getElementById('result');
+          res.innerHTML=text;
+          
+
+
+    }
+}
+var   msg = document.getElementById('msg');
+
+  xhr.send(msg.value);
+ }
+  
+
+
+ 
+
+ 
+    </script>
+    
 </body>
 
 </html>

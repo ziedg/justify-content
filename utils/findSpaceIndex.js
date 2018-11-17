@@ -6,7 +6,7 @@ the word should be meaningful..
 
 module.exports = chaine => {
   index = 1;
-  if (!chaine[chaine.length - 1].match(/[a-zA-Z]/)) {
+  if (  ! chaine ||  ! chaine[chaine.length-1]  ||  !chaine[chaine.length - 1].match(/[a-zA-Z]/)) {
     return 1;
   }
 

@@ -30,6 +30,8 @@ app.get('/',(req,res)=>{
   app.post("/api/token", (req, res) => {
     const { email } = req.body;
 
+
+
     if(!email   || email===''  ){
       return res.send({
         msg:'email is required'
