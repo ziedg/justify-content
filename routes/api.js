@@ -23,7 +23,9 @@ module.exports = app => {
     next();
   }
 
-
+app.get('/',(req,res)=>{
+  res.render('index.html');
+})
 
   app.post("/api/token", (req, res) => {
     const { email } = req.body;

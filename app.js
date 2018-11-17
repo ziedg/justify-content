@@ -25,6 +25,7 @@ conn.once('open', () =>{
 
 const app = express();
 
+
 //middlewars
 app.use(express.static(path.join(__dirname,'public')));
 app.use(cors({ origin: true }));
