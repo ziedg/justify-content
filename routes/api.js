@@ -109,12 +109,14 @@ app.get('/',(req,res)=>{
       let justifiedText = "";
       arr.forEach(ch => {
 
-   
-        if (!ch.trim() == "") {
-          justifiedText+=ch; }
+        console.log(ch.length)
+        if (!ch.trim() == "" ) {
+         
+          justifiedText += justify(ch+' ');
+          
+        }
       });
-             
-      justifiedText = justify(justifiedText) + "\n";
+      justifiedText= justify(justifiedText)
 
       if (total <= 80000) {
         res.send(justifiedText);

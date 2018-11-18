@@ -5,9 +5,11 @@ const isEmptyLine = require("./isEmptyLine");
 
 module.exports = str => {
   let temp = "";
+  console.log(str)
 
   //replace every end of line caracter with a space
   let chaine = str.replace(/\n/g, " ");
+  console.log(chaine.length)
 
   const taille = chaine.length;
 
@@ -15,7 +17,7 @@ module.exports = str => {
     return chaine;
   }
 
-  let index = 1;
+  var index = 1;
   let i = 0;
   let ligne = "";
   while (i <= Math.floor(taille / 80)) {
@@ -24,15 +26,16 @@ module.exports = str => {
 
     ligne = chaine.substr(0, 80);
 
-    try {
+   
+
+
       index = findSpace(ligne);
-    } catch (e) {
-      console.log(e);
-    }
+      
+  
 
     if (index > 1) {
       ligne = chaine.substr(0, 80 - index);
-
+   
       ligne = justifyLigne(ligne);
 
       if (isEmptyLine(ligne.replace(/\n/g, " "))) {

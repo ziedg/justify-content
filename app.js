@@ -38,6 +38,6 @@ require("./routes/api")(app);
 
 const PORT = process.env.PORT
 
-app.listen(PORT, () => {
+app.listen(4000, () => {
   console.log(`App is up at port ${PORT} `);
 });

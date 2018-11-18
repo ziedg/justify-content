@@ -6,8 +6,14 @@ module.exports = chaine => {
   ch = "";
   let sub = "";
   let inde = Math.floor(80 / index);
+console.log(index,inde)
+ 
+
+
+ 
   while (index > 1) {
-    index -= 1;
+    index -= 1
+
 
     sub = chaine.substr(inde * k, inde);
 
@@ -18,10 +24,12 @@ module.exports = chaine => {
     k++;
   }
 
-  return ch + chaine.substring(ch.length - startIndex + 1);
+  return ch + chaine.substring(ch.length - startIndex +1);
+
+
 };
 
-const addSpace = chaine => {
+const addSpace = (chaine) => {
   
 
   let ok = true;
@@ -30,7 +38,7 @@ const addSpace = chaine => {
   while (ok) {
     i++;
     if (chaine[i] === " ") {
-      chaine = [chaine.slice(0, i), " ", chaine.slice(i)].join("");
+      chaine = [chaine.slice(0, i), ' ', chaine.slice(i)].join("");
 
       ok = false;
     }
