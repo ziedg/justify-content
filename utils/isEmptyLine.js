@@ -7,10 +7,9 @@ module.exports = chaine => {
   i = 0;
 
   while (i < chaine.length) {
-    if (chaine[i] !== " ") {
+    if (chaine[i] !== " " ) {
       ok = false;
-
-      break;
+          break;
     }
     i++;
   }

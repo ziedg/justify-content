@@ -5,11 +5,11 @@ const isEmptyLine = require("./isEmptyLine");
 
 module.exports = str => {
   let temp = "";
-  console.log(str)
+
 
   //replace every end of line caracter with a space
   let chaine = str.replace(/\n/g, " ");
-  console.log(chaine.length)
+
 
   const taille = chaine.length;
 

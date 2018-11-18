@@ -6,7 +6,7 @@ module.exports = chaine => {
   ch = "";
   let sub = "";
   let inde = Math.floor(80 / index);
-console.log(index,inde)
+
  
 
 

@@ -106,20 +106,31 @@ app.get('/',(req,res)=>{
 
   
 
+
+
       let justifiedText = "";
+
+      let justified= "";
       arr.forEach(ch => {
 
-        console.log(ch.length)
+
         if (!ch.trim() == "" ) {
          
           justifiedText += justify(ch+' ');
           
         }
+        if(ch==''){
+          
+          justified+= justify(justifiedText)
+          justifiedText=''
+        }
       });
-      justifiedText= justify(justifiedText)
+      justifiedText =justify(justifiedText)
+      justified+= justify(justifiedText);
+    
 
       if (total <= 80000) {
-        res.send(justifiedText);
+        res.send(justified);
 
         if(user ){
         user.text.push({
