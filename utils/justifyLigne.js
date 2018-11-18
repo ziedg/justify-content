@@ -1,4 +1,6 @@
 module.exports = chaine => {
+
+
   let taille = chaine.length;
   let startIndex = 80 - taille;
   let index = 80 - taille;
@@ -7,11 +9,11 @@ module.exports = chaine => {
   let sub = "";
   let inde = Math.floor(80 / index);
 
- 
 
 
+
  
-  while (index > 1) {
+  while (index > 0    ) {
     index -= 1
 
 
@@ -20,11 +22,22 @@ module.exports = chaine => {
     sub = addSpace(sub);
 
     ch += sub;
+    
 
     k++;
+   if(ch.length+sub.length < 80+inde){
+     break;
+   }
+
   }
 
-  return ch + chaine.substring(ch.length - startIndex +1);
+   
+    ch =  ch+ chaine.substring(ch.length - (k+index-1))
+  
+
+
+  return ch
+
 
 
 };
