@@ -75,7 +75,8 @@
 
  function send(){
   var  xhr = new XMLHttpRequest();
-  xhr.open("POST", 'https://secret-plateau-15983.herokuapp.com/api/token', true);
+  xhr.open("POST", 'http://localhost:4000/api/token', true);
+  //xhr.open("POST", 'https://secret-plateau-15983.herokuapp.com/api/token', true);
   xhr.setRequestHeader("Content-Type", "application/json");
   xhr.onreadystatechange = function(res) { // Call a function when the state changes.
     if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -96,9 +97,10 @@
   
 
   function  justify (){
-      console.log(token)
+  
   var  xhr = new XMLHttpRequest();
-  xhr.open("POST", 'https://secret-plateau-15983.herokuapp.com/api/justify', true);
+  xhr.open("POST", 'http://localhost:4000/api/justify', true);
+ // xhr.open("POST", 'https://secret-plateau-15983.herokuapp.com/api/justify', true);
   xhr.setRequestHeader("Content-Type", "text/plain");
   xhr.setRequestHeader('x-access-token', token)
   xhr.onreadystatechange = function(res) {
@@ -106,17 +108,19 @@
           var  text = this.response;
       
           const res = document.getElementById('result');
+          console.log(this)
           res.innerHTML=text;
           
 
 
     }
-
+    console.log(this)
      if (this.readyState === XMLHttpRequest.DONE && this.status === 402) {
           var  text = this.response;
       
           const res = document.getElementById('result');
           res.innerHTML=text;
+          console.log(this)
           
 
 

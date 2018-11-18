@@ -70,6 +70,8 @@ app.get('/',(req,res)=>{
 
   app.post("/api/justify", authMiddleware, async (req, res) => {
     //manage date
+
+    
     const date = new Date(Date.now());
     const year = date.getFullYear();
     const month = date.getMonth();
@@ -77,7 +79,7 @@ app.get('/',(req,res)=>{
     let total = 0;
     let arr = req.body.split("\n");
     if(! req.body || req.body==='' ){
-      return  res.send({msg:"make sure to enter a text!!"})
+      return  res.send("make sure to enter a text!!")
     }
 
     const nbMots = req.body.length;
@@ -87,6 +89,8 @@ app.get('/',(req,res)=>{
         email: req._token
       });
     if(user){
+
+   
       user.text.map(item => {
         const itemYear = item.date.getFullYear();
         const itemMonth = item.date.getMonth();
@@ -96,14 +100,22 @@ app.get('/',(req,res)=>{
           total += item.numberOfWords;
         }
       });
+
+      
     }
+
+  
 
       let justifiedText = "";
       arr.forEach(ch => {
+
+   
         if (!ch.trim() == "") {
-          justifiedText += justify(ch) + "\n";
-        }
+          justifiedText+=ch; }
       });
+             
+      justifiedText = justify(justifiedText) + "\n";
+
       if (total <= 80000) {
         res.send(justifiedText);
 
